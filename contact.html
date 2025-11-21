@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toy Galaxy - Contact Us</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Style for contact information section */
+        .contact-info {
+            border: 2px solid var(--primary-color);
+            padding: 2rem;
+            margin: 2rem 0;
+            background: rgba(255, 42, 42, 0.55);
+        }
+        
+        /* Table styling for business hours */
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .hours-table td {
+            padding: 0.5rem;
+            border: 1px solid var(--secondary-color); /* Changed to match header color */
+        }
+
+        /* Override default link color */
+        a {
+            color: #5fff5f !important; /* Bright green for links */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Carousel container */
+        .carousel {
+            position: relative;
+            width: fit-content; /* Adjust to image size */
+            max-width: 800px;
+            margin: 2rem auto;
+            border: 4px solid var(--primary-color);
+            background: #000;
+        }
+
+        /* Individual slide styling */
+        .carousel-slide {
+            display: none;
+            position: relative;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-slide img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Navigation arrows styling */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--secondary-color);
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 24px;
+            border: none;
+            z-index: 10;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        /* Header color adjustment */
+        h2 {
+            color: var(--secondary-color) !important; /* Match main header color */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu (same on all pages) -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="q&a.html">FAQ</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Contact Toy Galaxy</h1>
+        
+        <div class="contact-info">
+            <h2>About Us</h2>
+            <p>We buy, sell and trade vintage and new toys, comics, video games, vinyl and related items.</p>
+            
+            <h2>Contact Information</h2>
+            <p>Phone: <a href="tel:2184910127">(218) 491-0127</a></p>
+            <p>Email: <a href="mailto:toygalaxyusa@gmail.com">toygalaxyusa@gmail.com</a></p>
+            
+            <h2>Business Hours</h2>
+            <table class="hours-table">
+                <tr>
+                    <td>Monday</td>
+                    <td>11:00 - 18:00</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>11:00 - 18:00</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>11:00 - 18:00</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>11:00 - 18:00</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>11:00 - 18:00</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>11:00 - 18:00</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>CLOSED</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Our Store</h2>
+        <!-- 
+            CAROUSEL INSTRUCTIONS:
+            1. Add new images to the 'images' folder
+            2. Copy and paste a new carousel-slide div for each image
+            3. Update the src attribute with your image path
+            4. Update the alt attribute with a description of the image
+        -->
+        <div class="carousel">
+            <!-- Navigation Arrows -->
+            <button class="carousel-arrow carousel-prev">&#10094;</button>
+            <button class="carousel-arrow carousel-next">&#10095;</button>
+            
+            <!-- Image Slides -->
+            <div class="carousel-slide">
+                <img src="images/hansoloclone.jpg" alt="Toy Galaxy Store">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/hansoloclonewithhelmet.jpg" alt="Toy Galaxy Store">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/hansoloclonewithhelmetscaledwithapple.jpg" alt="Toy Galaxy Store">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same on all pages) -->
+    <footer>
+        <p>&copy; 2025 Toy Galaxy. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Carousel functionality
+        function setupCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevButton = document.querySelector('.carousel-prev');
+            const nextButton = document.querySelector('.carousel-next');
+            if (slides.length === 0) return;
+            
+            let currentSlide = 0;
+            let slideInterval;
+            slides[0].classList.add('active');
+            
+            // Function to show a specific slide
+            function showSlide(index) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (index + slides.length) % slides.length; // Ensure positive index
+                slides[currentSlide].classList.add('active');
+            }
+            
+            // Function to start automatic slideshow
+            function startSlideshow() {
+                slideInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 5000);
+            }
+            
+            // Function to reset slideshow timer
+            function resetSlideshow() {
+                clearInterval(slideInterval);
+                startSlideshow();
+            }
+            
+            // Event listeners for navigation buttons
+            prevButton.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+                resetSlideshow();
+            });
+            
+            nextButton.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+                resetSlideshow();
+            });
+            
+            // Start the slideshow
+            startSlideshow();
+        }
+        
+        document.addEventListener('DOMContentLoaded', setupCarousel);
+    </script>
+</body>
+</html>

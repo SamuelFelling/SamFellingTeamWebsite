@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name - Space Invaders</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <!-- Page-specific styles (small and safe to inline) -->
+  <style>
+    .game-wrapper {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-bottom: .75rem;
+      font-family: system-ui, sans-serif;
+    }
+    .hud {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+    .hud .tag { opacity: .75; font-weight: 500; margin-right: .25rem; }
+    .controls {
+      display: flex; gap: .5rem; flex-wrap: wrap;
+    }
+    .controls button {
+      border: 1px solid #666; background: #111; color: #eee;
+      padding: .5rem .75rem; border-radius: .5rem; cursor: pointer;
+    }
+    .controls button:hover { filter: brightness(1.15); }
+    .game-canvas {
+      display: block; width: 100%; height: auto; background: #000; border: 2px solid #444;
+      image-rendering: pixelated; /* crisp look */
+    }
+    .help {
+      margin-top: .75rem; opacity: .8; font-size: .95rem;
+    }
+    /* Mobile touch pad */
+    .touchpad {
+      display: none;
+      margin-top: .75rem; gap: .5rem; justify-content: center; flex-wrap: wrap;
+    }
+    .touchpad button {
+      min-width: 80px;
+      border: 1px solid #666; background: #181818; color: #eee;
+      padding: .75rem 1rem; border-radius: .75rem; font-weight: 600; letter-spacing: .02em;
+    }
+    @media (max-width: 760px) {
+      .touchpad { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Menu (same on all pages) -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="q&a.html">FAQ</a></li>
+      <li><a href="game.html" aria-current="page">Game</a></li>
+    </ul>
+  </nav>
+
+  <main class="game-wrapper">
+    <div class="game-header">
+      <div class="hud">
+        <span><span class="tag">Score:</span><span id="score">0</span></span>
+        <span><span class="tag">High:</span><span id="highscore">0</span></span>
+        <span><span class="tag">Lives:</span><span id="lives">3</span></span>
+        <span><span class="tag">Level:</span><span id="level">1</span></span>
+      </div>
+      <div class="controls">
+        <button id="btn-pause" title="P">Pause</button>
+        <button id="btn-mute" title="M">Mute</button>
+        <button id="btn-reset" title="R">Reset</button>
+      </div>
+    </div>
+
+    <canvas id="game" class="game-canvas" width="800" height="600" aria-label="Space Invaders game canvas"></canvas>
+
+    <div class="touchpad" aria-label="On-screen controls for mobile">
+      <button id="t-left">◀︎ Left</button>
+      <button id="t-fire">⎋ Fire</button>
+      <button id="t-right">Right ▶︎</button>
+    </div>
+
+    <p class="help">
+      Keyboard: ← → to move, Space to fire, P to pause, M to mute, R to reset. Destroy all invaders, avoid bombs, protect your base with shields!
+    </p>
+  </main>
+
+  <!-- Footer (same on all pages) -->
+  <footer>
+    <p>&copy; 2025 Your Name. All rights reserved.</p>
+  </footer>
+
+  <!-- Your global script can stay -->
+  <script src="js/script.js"></script>
+  <!-- Game script -->
+  <script src="js/space-invaders.js" defer></script>
+</body>
+</html>
